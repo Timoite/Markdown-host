@@ -17,15 +17,16 @@ Hook the audience by saying:
 1. Facial animation is a booming field in gaming and film, e.g. Unreal Metahuman and Flawless AI (show some picture)
 2. While looking photorealistic, the intra-oral cavity (especially tongue) is often neglectedor requires manual artist labor
 3. Goal: Automate this "inner-mouth" animation process to match the quality of "outer face" for better speech intelligibility
+4. mcgurk effect
 
 ## Slide 3: The Current State
 
 1. Blendshapes (linear combination of expression extremes) are standard to drive a face model right now, and we have dataset (BEAT) and face model (ICT-FaceKit) for this that fits a common standard called "ARKit". It's nice that we already have a standardised pipeline in this field
 2. However, they lack explicit tongue information. When the mouth opens, we can see the tongue is actually moving with the jaw and never actually looks like it help producing any speech. (Picture of  vs an real face speaking, I hope I can find a )
 3. Impact: loss of semantic information. (Showing a visual speech recognition result compared to actual speech)
-	1. Theoretically hard to distinguish specific phonemes without tongue cues (e.g. /t/ vs /k/)
+	1. Theoretically hard to distinguish specific phones without tongue cues (e.g. [t] vs [k])
 
-## Slide 4: Baseline Visual Speech Recognition
+## Slide 4: Baseline Visual Speech Recognition (or previous approach towards)
 
 1. Using the BEAT dataset as a baseline
 2. Present initial Word Error Rate (WER) results on the face-only animation
@@ -33,7 +34,7 @@ Hook the audience by saying:
 
 ## Slide 5: Approaches to Tongue Animation
 
-1. Discuss our approach to the tongue animation
+1. Discuss our approach to the tongue animation (paper reference)
 2. A detailed pipeline graph would be nice here (Charles)
 
 ## Slide 6: More Details on Tongue Animation...
@@ -68,6 +69,7 @@ Speech Audio -> (denoising?) -> Inversion Model -> Keypoints -> Optimization Ste
 1. Run Visual Speech Recognition again on the combined model, we would expect a lower WER
 2. If not, explain some reasoning (I hope I don't need to)
 3. Metric: Can do some metric for special articulation like /t/ and /k/ for the optimised data? (Technically we need TextGrid to be available and we do hot optimization on the data, not by training a model additionally, so this worths a discussion)
+4. compare the model with audio2face maybe
 
 ## Slide 11: Next Step
 
